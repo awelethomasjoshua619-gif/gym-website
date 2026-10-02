@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-red: #e02b2b;
+  --color-brand-dark: #090909;
+  --color-brand-grey: #171717;
+  --color-brand-silver: #e0e0e0;
+  --font-athletic: "Inter", system-ui, sans-serif;
+  --font-display: "Oswald", sans-serif;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply m-0 overflow-x-hidden bg-brand-dark font-athletic text-white;
+    min-width: 320px;
+  }
+
+  button,
+  a,
+  select,
+  input,
+  textarea {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  select:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--color-brand-red);
+    outline-offset: 4px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    @apply font-display font-bold uppercase tracking-tight;
+  }
+
+  img {
+    @apply block max-w-full;
+  }
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  position: absolute;
+  right: 0;
+  bottom: -9px;
+  left: 0;
+  height: 1px;
+  background: var(--color-brand-red);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms ease;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.glass {
+  @apply border border-white/10 bg-white/5 backdrop-blur-lg;
+}
+
+.text-gradient {
+  @apply bg-gradient-to-r from-white to-brand-silver bg-clip-text text-transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
